@@ -1,0 +1,22 @@
+include:
+- project: platform/pipelines-templates
+  file: Application.gitlab-ci.yml
+  ref: HEAD
+- template: Workflows/MergeRequest-Pipelines.gitlab-ci.yml
+
+variables:
+  ENABLE_DOCKER_BUILD_IN_MR: "true"
+  NODE_IMAGE_TAG: "20"
+  IMAGE_NAME: jamstack/nextjs-event-template-11
+
+build:
+  extends: .npm-build
+  stage: build
+
+lint:
+  extends: .npm-lint
+  stage: sast
+
+test:
+  extends: .npm-test
+  stage: test

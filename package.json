@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && cp -r .next/static .next/standalone/.next/ && cp -r public .next/standalone/",
+    "build": "next build && next-sitemap && cp -r .next/static .next/standalone/.next/ && cp -r public .next/standalone/",
     "start": "next start",
     "lint": "next lint",
     "start:stubby": "stubby --watch --stubs 8000 --data .stubby/stubby.config.yml",
@@ -14,7 +14,8 @@
   "dependencies": {
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.19"
+    "next": "14.2.19",
+    "next-sitemap": "^4.2.3"
   },
   "devDependencies": {
     "typescript": "^5",

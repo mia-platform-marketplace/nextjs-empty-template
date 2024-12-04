@@ -7,7 +7,7 @@ include:
 variables:
   ENABLE_DOCKER_BUILD_IN_MR: "true"
   NODE_IMAGE_TAG: "20"
-  IMAGE_NAME: jamstack/nextjs-empty-template05
+  IMAGE_NAME: mia_template_image_name_placeholder
 
 build:
   extends: .npm-build

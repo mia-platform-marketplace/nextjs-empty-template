@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 
-const siteUrl = 'https://platmosphere.com'
+const siteUrl = 'http://localhost:3000'
 
 module.exports = {
   siteUrl,

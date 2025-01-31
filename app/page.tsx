@@ -4,6 +4,7 @@ import { fetchCrudCollection } from "@/lib/api";
 export default async function Home() {
 
   const homePage = await fetchCrudCollection({endpoint: 'starter-config'})
+  console.log('HOMEPAGE', homePage)
 
   return (
     <div className={styles.page}>

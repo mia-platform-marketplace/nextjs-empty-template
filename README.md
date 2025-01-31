@@ -2,6 +2,15 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+First to install the dependencies run the following commands:
+
+```bash
+# use node version 20 or more
+npm install
+# or
+yarn install
+```
+
 First, run the development server:
 
 ```bash

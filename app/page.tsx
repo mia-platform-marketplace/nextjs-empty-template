@@ -1,25 +1,16 @@
-import Image from "next/image";
 import styles from "./page.module.css";
+import { fetchCrudCollection } from "@/lib/api";
 
-export default function Home() {
+export default async function Home() {
+
+  const homePage = await fetchCrudCollection({endpoint: 'starter-config'})
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
+        <h1>
+          {homePage && homePage[0]?.title ? homePage[0]?.title : 'Hello World!'}
+        </h1>
       </main>
     </div>
   );

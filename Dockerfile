@@ -27,6 +27,8 @@ COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 # copy the static folder inside the .next folder generated from the build process
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+# copy the static folder inside the .next folder generated from the build process
+COPY --from=builder --chown=nextjs:nodejs /app/entrypoint.sh ./entrypoint.sh
 
 RUN touch ./off \
   && chmod o+rw ./off \

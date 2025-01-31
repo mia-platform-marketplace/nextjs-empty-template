@@ -7,20 +7,18 @@ First to install the dependencies run the following commands:
 ```bash
 # use node version 20 or more
 npm install
-# or
-yarn install
 ```
 
-First, run the development server:
+Then, run the mock server:
+
+```bash
+npm run start:stubby
+```
+
+After stubby started , run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

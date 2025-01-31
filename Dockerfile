@@ -10,8 +10,8 @@ RUN npm run build
 FROM node:iron-alpine AS production
 WORKDIR /app
 
-LABEL name="nextjs-empty-template" \
-  description="Jamstack Empty Website" \
+LABEL name="nextjs-blog-template" \
+  description="Jamstack Blog Website" \
   eu.mia-platform.url="https://www.mia-platform.eu"
 
 ENV NODE_ENV production
@@ -30,14 +30,18 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 # copy the static folder inside the .next folder generated from the build process
 COPY --from=builder --chown=nextjs:nodejs /app/entrypoint.sh ./entrypoint.sh
 
-RUN touch ./off \
-  && chmod o+rw ./off \
-  && echo "nextjs-empty-template: $COMMIT_SHA" >> ./commit.sha
+# change permissions on app folder
+RUN chown -R nextjs:nodejs /app
 
 USER nextjs
 
-EXPOSE 3000
+RUN chmod 700 /app
 
+# This script replaces placeholder strings created by Next build at build time (to be used as env vars) with env vars values available at runtime.
+# NB: env vars are replaced only if they start with REPLACE_SERVER_ENV_ keyword
+RUN chmod +x ./entrypoint.sh
+
+EXPOSE 3000
 ENV PORT 3000
 
-CMD ["node", "server.js"]
+ENTRYPOINT ["/app/entrypoint.sh", "node", "server.js"]
